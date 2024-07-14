@@ -40,6 +40,7 @@ namespace titanic_launcher
                         RankedScore.Text = $"Ranked Score: {u.StdScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100,2)}%";
+                        LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
                         break;
                     }
                 case 1:
@@ -48,6 +49,7 @@ namespace titanic_launcher
                         RankedScore.Text = $"Ranked Score: {u.TaikoScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.TaikoScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.TaikoScore.Accuracy * 100,2)}%";
+                        LevelLabel.Text = $"Level: {u.CalculateLevel(u.TaikoScore).lvl}";
                         break;
                     }
                 case 2:
@@ -56,6 +58,7 @@ namespace titanic_launcher
                         RankedScore.Text = $"Ranked Score: {u.CtbScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.CtbScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.CtbScore.Accuracy * 100,2)}%";
+                        LevelLabel.Text = $"Level: {u.CalculateLevel(u.CtbScore).lvl}";
                         break;
                     }
                 case 3:
@@ -64,6 +67,7 @@ namespace titanic_launcher
                         RankedScore.Text = $"Ranked Score: {u.ManiaScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.ManiaScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.ManiaScore.Accuracy * 100,2)}%";
+                        LevelLabel.Text = $"Level: {u.CalculateLevel(u.ManiaScore).lvl}";
                         break;
                     }
 
