@@ -28,12 +28,155 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            userInfopanel = new Panel();
+            PP = new Label();
+            RankedScore = new Label();
+            TotalScore = new Label();
+            Username = new Label();
+            userImage = new PictureBox();
+            TabsPanel = new Panel();
+            tabSettings = new Button();
+            tabHome = new Button();
+            container = new Panel();
+            userInfopanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
+            TabsPanel.SuspendLayout();
+            SuspendLayout();
+            // 
+            // userInfopanel
+            // 
+            userInfopanel.BorderStyle = BorderStyle.FixedSingle;
+            userInfopanel.Controls.Add(PP);
+            userInfopanel.Controls.Add(RankedScore);
+            userInfopanel.Controls.Add(TotalScore);
+            userInfopanel.Controls.Add(Username);
+            userInfopanel.Controls.Add(userImage);
+            userInfopanel.Location = new Point(1, 362);
+            userInfopanel.Name = "userInfopanel";
+            userInfopanel.Size = new Size(798, 86);
+            userInfopanel.TabIndex = 0;
+            userInfopanel.Paint += userInfopanel_Paint;
+            // 
+            // PP
+            // 
+            PP.AutoSize = true;
+            PP.Location = new Point(88, 50);
+            PP.Name = "PP";
+            PP.Size = new Size(24, 15);
+            PP.TabIndex = 1;
+            PP.Text = "PP:";
+            // 
+            // RankedScore
+            // 
+            RankedScore.AutoSize = true;
+            RankedScore.Location = new Point(88, 35);
+            RankedScore.Name = "RankedScore";
+            RankedScore.Size = new Size(84, 15);
+            RankedScore.TabIndex = 1;
+            RankedScore.Text = "Ranked Score: ";
+            // 
+            // TotalScore
+            // 
+            TotalScore.AutoSize = true;
+            TotalScore.Location = new Point(88, 20);
+            TotalScore.Name = "TotalScore";
+            TotalScore.Size = new Size(70, 15);
+            TotalScore.TabIndex = 1;
+            TotalScore.Text = "Total Score: ";
+            // 
+            // Username
+            // 
+            Username.AutoSize = true;
+            Username.Location = new Point(88, 5);
+            Username.Name = "Username";
+            Username.Size = new Size(60, 15);
+            Username.TabIndex = 1;
+            Username.Text = "Username";
+            // 
+            // userImage
+            // 
+            userImage.Location = new Point(8, 5);
+            userImage.Name = "userImage";
+            userImage.Size = new Size(74, 71);
+            userImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            userImage.TabIndex = 0;
+            userImage.TabStop = false;
+            // 
+            // TabsPanel
+            // 
+            TabsPanel.BackColor = Color.FromArgb(20, 20, 20);
+            TabsPanel.Controls.Add(tabSettings);
+            TabsPanel.Controls.Add(tabHome);
+            TabsPanel.Location = new Point(1, -1);
+            TabsPanel.Name = "TabsPanel";
+            TabsPanel.Size = new Size(798, 38);
+            TabsPanel.TabIndex = 1;
+            // 
+            // tabSettings
+            // 
+            tabSettings.BackColor = Color.FromArgb(192, 0, 0);
+            tabSettings.FlatStyle = FlatStyle.Popup;
+            tabSettings.Location = new Point(118, -1);
+            tabSettings.Name = "tabSettings";
+            tabSettings.Size = new Size(112, 38);
+            tabSettings.TabIndex = 0;
+            tabSettings.Text = "Settings";
+            tabSettings.UseVisualStyleBackColor = false;
+            tabSettings.Click += tabSettings_Click;
+            // 
+            // tabHome
+            // 
+            tabHome.BackColor = Color.FromArgb(192, 0, 0);
+            tabHome.FlatStyle = FlatStyle.Popup;
+            tabHome.Location = new Point(0, -1);
+            tabHome.Name = "tabHome";
+            tabHome.Size = new Size(112, 38);
+            tabHome.TabIndex = 0;
+            tabHome.Text = "Home";
+            tabHome.UseVisualStyleBackColor = false;
+            tabHome.Click += tabHome_Click;
+            // 
+            // container
+            // 
+            container.Location = new Point(2, 34);
+            container.Name = "container";
+            container.Size = new Size(797, 328);
+            container.TabIndex = 2;
+            container.Paint += container_Paint;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(11, 11, 11);
+            ClientSize = new Size(800, 450);
+            Controls.Add(container);
+            Controls.Add(TabsPanel);
+            Controls.Add(userInfopanel);
+            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "osu!titanic";
+            Load += Form1_Load;
+            userInfopanel.ResumeLayout(false);
+            userInfopanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)userImage).EndInit();
+            TabsPanel.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel userInfopanel;
+        private PictureBox userImage;
+        private Label RankedScore;
+        private Label TotalScore;
+        private Label Username;
+        private Label PP;
+        private Panel TabsPanel;
+        private Button tabSettings;
+        private Button tabHome;
+        private Panel container;
     }
 }
