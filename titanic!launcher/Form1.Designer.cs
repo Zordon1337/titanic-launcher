@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             userInfopanel = new Panel();
+            Accuracy = new Label();
             PP = new Label();
             RankedScore = new Label();
             TotalScore = new Label();
@@ -38,7 +39,7 @@
             tabSettings = new Button();
             tabHome = new Button();
             container = new Panel();
-            Accuracy = new Label();
+            LevelLabel = new Label();
             userInfopanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
             TabsPanel.SuspendLayout();
@@ -47,6 +48,7 @@
             // userInfopanel
             // 
             userInfopanel.BorderStyle = BorderStyle.FixedSingle;
+            userInfopanel.Controls.Add(LevelLabel);
             userInfopanel.Controls.Add(Accuracy);
             userInfopanel.Controls.Add(PP);
             userInfopanel.Controls.Add(RankedScore);
@@ -58,6 +60,15 @@
             userInfopanel.Size = new Size(798, 86);
             userInfopanel.TabIndex = 0;
             userInfopanel.Paint += userInfopanel_Paint;
+            // 
+            // Accuracy
+            // 
+            Accuracy.AutoSize = true;
+            Accuracy.Location = new Point(89, 65);
+            Accuracy.Name = "Accuracy";
+            Accuracy.Size = new Size(59, 15);
+            Accuracy.TabIndex = 1;
+            Accuracy.Text = "Accuracy:";
             // 
             // PP
             // 
@@ -146,14 +157,14 @@
             container.TabIndex = 2;
             container.Paint += container_Paint;
             // 
-            // Accuracy
+            // LevelLabel
             // 
-            Accuracy.AutoSize = true;
-            Accuracy.Location = new Point(89, 65);
-            Accuracy.Name = "Accuracy";
-            Accuracy.Size = new Size(59, 15);
-            Accuracy.TabIndex = 1;
-            Accuracy.Text = "Accuracy:";
+            LevelLabel.AutoSize = true;
+            LevelLabel.Location = new Point(578, 5);
+            LevelLabel.Name = "LevelLabel";
+            LevelLabel.Size = new Size(40, 15);
+            LevelLabel.TabIndex = 2;
+            LevelLabel.Text = "Level: ";
             // 
             // Form1
             // 
@@ -190,5 +201,6 @@
         private Button tabHome;
         private Panel container;
         private Label Accuracy;
+        private Label LevelLabel;
     }
 }

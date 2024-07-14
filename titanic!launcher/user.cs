@@ -135,14 +135,18 @@ namespace titanic_launcher
         public Level CalculateLevel(Score sc)
         {
             Level lvl = new Level();
+            long xpscore = sc.TotalScore;
             for (int i = 0; i < toNextLevel.Length; i++)
             {
-                if (sc.TotalScore - toNextLevel[i] < 0)
+                if (xpscore - toNextLevel[i] < 0)
                 {
                     lvl.lvl = i + 1;
                     lvl.current_xp = sc.TotalScore;
                     lvl.required_xp = toNextLevel[i];
+
+                    return lvl;
                 }
+                xpscore -= toNextLevel[i];
             }
             return lvl;
         }

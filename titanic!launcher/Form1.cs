@@ -22,6 +22,7 @@ namespace titanic_launcher
             RankedScore.Text = $"Ranked Score: {u.StdScore.RankedScore.ToString("N0")}";
             TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
             Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
+            LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
             this.userImage.ImageLocation = u.ImagePath;
         }
 
