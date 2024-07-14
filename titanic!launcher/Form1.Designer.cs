@@ -38,6 +38,7 @@
             tabSettings = new Button();
             tabHome = new Button();
             container = new Panel();
+            Accuracy = new Label();
             userInfopanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
             TabsPanel.SuspendLayout();
@@ -46,6 +47,7 @@
             // userInfopanel
             // 
             userInfopanel.BorderStyle = BorderStyle.FixedSingle;
+            userInfopanel.Controls.Add(Accuracy);
             userInfopanel.Controls.Add(PP);
             userInfopanel.Controls.Add(RankedScore);
             userInfopanel.Controls.Add(TotalScore);
@@ -95,9 +97,9 @@
             // 
             // userImage
             // 
-            userImage.Location = new Point(8, 5);
+            userImage.Location = new Point(3, 5);
             userImage.Name = "userImage";
-            userImage.Size = new Size(74, 71);
+            userImage.Size = new Size(80, 75);
             userImage.SizeMode = PictureBoxSizeMode.StretchImage;
             userImage.TabIndex = 0;
             userImage.TabStop = false;
@@ -144,6 +146,15 @@
             container.TabIndex = 2;
             container.Paint += container_Paint;
             // 
+            // Accuracy
+            // 
+            Accuracy.AutoSize = true;
+            Accuracy.Location = new Point(89, 65);
+            Accuracy.Name = "Accuracy";
+            Accuracy.Size = new Size(59, 15);
+            Accuracy.TabIndex = 1;
+            Accuracy.Text = "Accuracy:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -178,5 +189,6 @@
         private Button tabSettings;
         private Button tabHome;
         private Panel container;
+        private Label Accuracy;
     }
 }

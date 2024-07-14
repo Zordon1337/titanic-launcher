@@ -21,6 +21,7 @@ namespace titanic_launcher
             PP.Text = $"PP: {((int)(u.StdScore.PP)).ToString()}";
             RankedScore.Text = $"Ranked Score: {u.StdScore.RankedScore.ToString("N0")}";
             TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
+            Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
             this.userImage.ImageLocation = u.ImagePath;
         }
 
@@ -37,6 +38,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.StdScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.StdScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100,2)}%";
                         break;
                     }
                 case 1:
@@ -44,6 +46,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.TaikoScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.TaikoScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.TaikoScore.TotalScore.ToString("N0")}";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.TaikoScore.Accuracy * 100,2)}%";
                         break;
                     }
                 case 2:
@@ -51,6 +54,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.CtbScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.CtbScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.CtbScore.TotalScore.ToString("N0")}";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.CtbScore.Accuracy * 100,2)}%";
                         break;
                     }
                 case 3:
@@ -58,6 +62,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.ManiaScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.ManiaScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.ManiaScore.TotalScore.ToString("N0")}";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.ManiaScore.Accuracy * 100,2)}%";
                         break;
                     }
 
