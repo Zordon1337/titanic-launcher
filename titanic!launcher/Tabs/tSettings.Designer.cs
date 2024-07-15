@@ -130,6 +130,6 @@
         private Label label2;
         public CheckBox checkBox1;
         private Label label3;
-        private TextBox textBox1;
+        public TextBox textBox1;
     }
 }

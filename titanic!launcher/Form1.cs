@@ -7,7 +7,7 @@ namespace titanic_launcher
     public partial class Form1 : Form
     {
 
-        
+
         tHome tHome = new tHome();
         tSettings tSettings = new tSettings();
         public Form1()
@@ -19,9 +19,9 @@ namespace titanic_launcher
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(Settings.sUsername != "")
-                Settings.u= api.getUser(Settings.sUsername);
-            if(Settings.u!= null)
+            if (Settings.sUsername != "")
+                Settings.u = api.getUser(Settings.sUsername);
+            if (Settings.u != null)
             {
                 Username.Text = Settings.u.Username;
                 PP.Text = $"PP: {((int)(Settings.u.StdScore.PP)).ToString()}";
@@ -33,18 +33,17 @@ namespace titanic_launcher
                 progressBar1.Value = (int)Settings.u.CalculateLevel(Settings.u.StdScore).current_xp / 100;
 
                 this.userImage.ImageLocation = Settings.u.ImagePath;
-            } else
+            }
+            else
             {
                 Username.Text = "User not logged in";
             }
-
         }
-        
+
         private void userInfopanel_Paint(object sender, PaintEventArgs e)
         {
 
-            if (Settings.sUsername != "")
-                Settings.u= api.getUser(Settings.sUsername);
+
             progressBar1.Visible = !Settings.bHideLevelProgress;
         }
         private void onProgressCheck(object sender, EventArgs e)
@@ -53,48 +52,56 @@ namespace titanic_launcher
         }
         private void onModeChange(object sender, EventArgs e)
         {
-            if (Settings.u== null)
+            if (Settings.u == null)
                 return;
             switch (tSettings.comboBox1.SelectedIndex)
             {
                 case 0:
                     {
+                        Username.Text = Settings.u.Username;
                         PP.Text = $"PP: {((int)(Settings.u.StdScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {Settings.u.StdScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {Settings.u.StdScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(Settings.u.StdScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.StdScore).lvl}";
                         progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.StdScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.StdScore).required_xp);
+                        this.userImage.ImageLocation = Settings.u.ImagePath;
                         break;
                     }
                 case 1:
                     {
+                        Username.Text = Settings.u.Username;
                         PP.Text = $"PP: {((int)(Settings.u.TaikoScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {Settings.u.TaikoScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {Settings.u.TaikoScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(Settings.u.TaikoScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.TaikoScore).lvl}";
                         progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.TaikoScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.TaikoScore).required_xp);
+                        this.userImage.ImageLocation = Settings.u.ImagePath;
                         break;
                     }
                 case 2:
                     {
+                        Username.Text = Settings.u.Username;
                         PP.Text = $"PP: {((int)(Settings.u.CtbScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {Settings.u.CtbScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {Settings.u.CtbScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(Settings.u.CtbScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.CtbScore).lvl}";
                         progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.CtbScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.CtbScore).required_xp);
+                        this.userImage.ImageLocation = Settings.u.ImagePath;
                         break;
                     }
                 case 3:
                     {
+                        Username.Text = Settings.u.Username;
                         PP.Text = $"PP: {((int)(Settings.u.ManiaScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {Settings.u.ManiaScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {Settings.u.ManiaScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(Settings.u.ManiaScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.ManiaScore).lvl}";
                         progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.ManiaScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.ManiaScore).required_xp);
+                        this.userImage.ImageLocation = Settings.u.ImagePath;
                         break;
                     }
 
@@ -127,6 +134,14 @@ namespace titanic_launcher
         private void LevelLabel_Click(object sender, EventArgs e)
         {
 
+        }
+        private void onUserNameUpdate(object sender, EventArgs e)
+        {
+            
+        }
+        private void StatsTimer_Tick(object sender, EventArgs e)
+        {
+            
         }
     }
     public static class Utils

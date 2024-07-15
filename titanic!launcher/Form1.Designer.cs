@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             userInfopanel = new Panel();
             progressBar1 = new ProgressBar();
             LevelLabel = new Label();
@@ -41,6 +42,7 @@
             tabSettings = new Button();
             tabHome = new Button();
             container = new Panel();
+            StatsTimer = new System.Windows.Forms.Timer(components);
             userInfopanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
             TabsPanel.SuspendLayout();
@@ -179,6 +181,11 @@
             container.TabIndex = 2;
             container.Paint += container_Paint;
             // 
+            // StatsTimer
+            // 
+            StatsTimer.Interval = 1000;
+            StatsTimer.Tick += StatsTimer_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -216,5 +223,6 @@
         private Label Accuracy;
         private Label LevelLabel;
         private ProgressBar progressBar1;
+        private System.Windows.Forms.Timer StatsTimer;
     }
 }

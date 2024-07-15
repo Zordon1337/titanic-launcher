@@ -47,7 +47,9 @@ namespace titanic_launcher.Tabs
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Settings.sUsername = textBox1.Text;
+
             Settings.u = api.getUser(Settings.sUsername);
+            this.comboBox1.SelectedIndex = 0;
         }
     }
 }
