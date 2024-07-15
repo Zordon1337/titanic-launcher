@@ -60,9 +60,19 @@ namespace titanic_launcher
             {
                 return false;
             }
+            
             return true;
         }
-        
+        public int getMaps()
+        {
+            if (!this.isInstalled())
+                return -1;
+            if(!Directory.Exists($"./clients/{this.Name}/Songs"))
+            {
+                return 0;
+            }
+            return Directory.GetDirectories($"./clients/{this.Name}/Songs").Length;
+        }
         public void Run()
         {
             string filename = "";
