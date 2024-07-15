@@ -39,6 +39,7 @@
             Username = new Label();
             userImage = new PictureBox();
             TabsPanel = new Panel();
+            tabLevelCalc = new Button();
             tabSettings = new Button();
             tabHome = new Button();
             container = new Panel();
@@ -142,12 +143,25 @@
             // TabsPanel
             // 
             TabsPanel.BackColor = Color.FromArgb(20, 20, 20);
+            TabsPanel.Controls.Add(tabLevelCalc);
             TabsPanel.Controls.Add(tabSettings);
             TabsPanel.Controls.Add(tabHome);
             TabsPanel.Location = new Point(1, -1);
             TabsPanel.Name = "TabsPanel";
             TabsPanel.Size = new Size(798, 38);
             TabsPanel.TabIndex = 1;
+            // 
+            // tabLevelCalc
+            // 
+            tabLevelCalc.BackColor = Color.FromArgb(192, 0, 0);
+            tabLevelCalc.FlatStyle = FlatStyle.Popup;
+            tabLevelCalc.Location = new Point(218, 0);
+            tabLevelCalc.Name = "tabLevelCalc";
+            tabLevelCalc.Size = new Size(112, 38);
+            tabLevelCalc.TabIndex = 0;
+            tabLevelCalc.Text = "Score Farming";
+            tabLevelCalc.UseVisualStyleBackColor = false;
+            tabLevelCalc.Click += tabLevelCalc_Click;
             // 
             // tabSettings
             // 
@@ -224,5 +238,6 @@
         private Label LevelLabel;
         private ProgressBar progressBar1;
         private System.Windows.Forms.Timer StatsTimer;
+        private Button tabLevelCalc;
     }
 }

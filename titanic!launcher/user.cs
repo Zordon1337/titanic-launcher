@@ -14,7 +14,7 @@ namespace titanic_launcher
     }
     public class User
     {
-        private static readonly long[] toNextLevel = new long[]
+        public static readonly long[] toNextLevel = new long[]
         {
             30000L,
             100000L,

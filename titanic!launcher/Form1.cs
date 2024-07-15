@@ -10,6 +10,7 @@ namespace titanic_launcher
 
         tHome tHome = new tHome();
         tSettings tSettings = new tSettings();
+        tLevelCalc tLevelCalc = new tLevelCalc();
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace titanic_launcher
 #if DEBUG || TESTRELEASE
             Pen myPen = new Pen(Color.Yellow);
             myPen.Width = 5;
-            g.DrawLine(myPen, 0,this.Size.Height, this.Width, this.Height);
+            g.DrawLine(myPen, 0, this.Size.Height, this.Width, this.Height);
 #endif
 
         }
@@ -56,7 +57,7 @@ namespace titanic_launcher
             {
                 Username.Text = "User not logged in";
             }
-            
+
             progressBar1.Visible = !Settings.bHideLevelProgress;
         }
 
@@ -157,11 +158,17 @@ namespace titanic_launcher
         }
         private void onUserNameUpdate(object sender, EventArgs e)
         {
-            
+
         }
         private void StatsTimer_Tick(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void tabLevelCalc_Click(object sender, EventArgs e)
+        {
+            container.Controls.Clear();
+            container.Controls.Add(tLevelCalc);
         }
     }
     public static class Utils
