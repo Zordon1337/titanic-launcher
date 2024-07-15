@@ -16,6 +16,20 @@ namespace titanic_launcher
             container.Controls.Clear();
             container.Controls.Add(tHome);
             this.FormClosed += FormClosing;
+
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g;
+
+            g = e.Graphics;
+#if DEBUG || TESTRELEASE
+            Pen myPen = new Pen(Color.Yellow);
+            myPen.Width = 5;
+            g.DrawLine(myPen, 0,this.Size.Height, this.Width, this.Height);
+#endif
+
         }
         private void FormClosing(object sender, EventArgs e)
         {

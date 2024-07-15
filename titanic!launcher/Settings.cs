@@ -9,14 +9,14 @@ namespace titanic_launcher
     internal class Settings
     {
 #if TESTRELEASE
-    public static readonly string version_ = ".release";
+    public static readonly string version_ = ".test";
 #elif DEBUG
         public static readonly string version_ = ".dev";
 #elif RELEASE
     public static readonly string version_ = "";
 #endif
 
-        public static readonly string version = "b16" + version_;
+        public static readonly string version = "b17" + version_;
         public static bool bHideLevelProgress = true;
         public static string sUsername = "";
         public static User u = null;
