@@ -119,8 +119,25 @@ namespace titanic_launcher
         }
         public static List<Client> getClients()
         {
-            List<Client> downloads = JsonSerializer.Deserialize<List<Client>>(_c.DownloadString("https://osu.lekuru.xyz/api/clients"));
-            return downloads;
+
+            
+            try
+            {
+                List<Client> downloads = JsonSerializer.Deserialize<List<Client>>(_c.DownloadString(Settings.manifest));
+
+                return downloads;
+            } catch(WebException e)
+            {
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    var response = e.Response as HttpWebResponse;
+                    if (response != null)
+                    {
+                        MessageBox.Show($"Server returned error {(int)response.StatusCode}\nplease make sure manifest you gave is correct.", "Uh oh, something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                return new List<Client>();
+            }
         }
         public static string getClientImage(Client cl)
         {

@@ -12,7 +12,6 @@ namespace titanic_launcher
         tSettings tSettings = new tSettings();
         public Form1()
         {
-            Settings.ReadFromConfig();
             InitializeComponent();
             container.Controls.Clear();
             container.Controls.Add(tHome);

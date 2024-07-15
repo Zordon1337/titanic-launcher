@@ -21,9 +21,10 @@ namespace titanic_launcher.Tabs
         {
 
             label2.Text = Settings.version.ToString();
-            this.textBox1.Text = Settings.sUsername;
+            this.usernameBox.Text = Settings.sUsername;
             this.comboBox1.SelectedIndex = Settings.FavoriteMode;
             this.checkBox1.Checked = Settings.bHideLevelProgress;
+            this.customManifest.Text = Settings.manifest;
         }
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace titanic_launcher.Tabs
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            Settings.sUsername = textBox1.Text;
+            Settings.sUsername = usernameBox.Text;
 
 
         }
@@ -57,13 +58,13 @@ namespace titanic_launcher.Tabs
         {
             if (Settings.u != null)
             {
-                if (Settings.u.Username == textBox1.Text)
+                if (Settings.u.Username == usernameBox.Text)
                 {
                     MessageBox.Show("Maybe change username in first place?", "what are trying to do");
                     return;
                 }
             }
-            
+
             bool smethod = Settings.u == null;
             if (!smethod)
             {
@@ -77,7 +78,8 @@ namespace titanic_launcher.Tabs
                 thr.Start();
                 while (Settings.u.Username == olduser)
                 { }
-            } else
+            }
+            else
             {
                 var thr = new Thread(() =>
                 {
@@ -89,10 +91,25 @@ namespace titanic_launcher.Tabs
                 { }
             }
 
-            
+
 
             this.comboBox1.SelectedIndex = 1;
             this.comboBox1.SelectedIndex = 0;
+        }
+
+        private void SaveCustomManifestBtn_Click(object sender, EventArgs e)
+        {
+            Settings.manifest = this.customManifest.Text;
+            Settings.clients = api.getClients();
+            Settings.bClientUpdateRequired = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Settings.manifest = "https://osu.lekuru.xyz/api/clients";
+            this.customManifest.Text = Settings.manifest;
+            Settings.clients = api.getClients();
+            Settings.bClientUpdateRequired = true;
         }
     }
 }

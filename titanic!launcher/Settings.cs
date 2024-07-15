@@ -16,20 +16,21 @@ namespace titanic_launcher
     public static readonly string version_ = "";
 #endif
 
-        public static readonly string version = "b15" + version_;
+        public static readonly string version = "b16" + version_;
         public static bool bHideLevelProgress = true;
         public static string sUsername = "";
         public static User u = null;
-        static string tr = "true";
-        static string fl = "false";
         public static int FavoriteMode = 0;
+        public static string manifest;
+        public static List<Client> clients;
+        public static bool bClientUpdateRequired = false;
         private static string BoolToString(bool value)
         {
             return value ? "true" : "false";
         }
         public static void WriteToConfig()
         {
-            File.WriteAllText("./config.tl",$"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}\n{FavoriteMode}");
+            File.WriteAllText("./config.tl",$"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}\n{FavoriteMode}\n{manifest}");
         }
         public static void ReadFromConfig() 
         {
@@ -37,10 +38,15 @@ namespace titanic_launcher
             {
                 string config = File.ReadAllText("./config.tl");
                 string[] lines = config.Split(new char[] { '\n' });
-                sUsername = lines[0];
-                bHideLevelProgress = lines[1] == "true";
-                FavoriteMode = int.Parse(lines[2]);
-            }
+                Settings.sUsername = lines[0];
+                Settings.bHideLevelProgress = lines[1] == "true";
+                Settings.FavoriteMode = int.Parse(lines[2]);
+                Settings.manifest = lines[3];
+            } else
+            {
+                Settings.manifest = "https://osu.lekuru.xyz/api/clients";
+            } 
+            
         }
     }
 }

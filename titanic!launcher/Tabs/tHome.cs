@@ -14,10 +14,13 @@ namespace titanic_launcher.Tabs
     public partial class tHome : UserControl
     {
         Point installpos = new Point(193, 220);
-        List<Client> clients = api.getClients();
+
         public tHome()
         {
             InitializeComponent();
+            Settings.ReadFromConfig();
+            Settings.clients = api.getClients();
+            timer1.Start();
         }
 
         private void tHome_Load(object sender, EventArgs e)
@@ -26,7 +29,7 @@ namespace titanic_launcher.Tabs
             {
                 //new Thread(() => { MessageBox.Show("Downloading Images, please wait\nETA: 20s", "lol", MessageBoxButtons.OK, MessageBoxIcon.Warning); }).Start();
             }
-            foreach (Client client in clients)
+            foreach (Client client in Settings.clients)
             {
                 api.getClientImage(client);
                 if (client.Screenshots.Count < 1)
@@ -40,11 +43,11 @@ namespace titanic_launcher.Tabs
         }
         private Client FindClient(string value)
         {
-            return clients.Find(x => x.Name == value);
+            return Settings.clients.Find(x => x.Name == value);
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             ClientImage.ImageLocation = api.getClientImage(FindClient(listBox1.Text));
             if (FindClient(listBox1.Text).isInstalled())
             {
@@ -57,6 +60,8 @@ namespace titanic_launcher.Tabs
                 BeatmapsLabel.Text = $"Beatmaps: {FindClient(listBox1.Text).getMaps()}";
                 ShowGameFilesBtn.Visible = true;
                 ShowGameFilesBtn.Location = new Point(327, 220);
+                UninstallBtn.Visible = true;
+                UninstallBtn.Location = new Point(327 + 134, 220);
             }
             else
             {
@@ -66,6 +71,7 @@ namespace titanic_launcher.Tabs
                 BeatmapsLabel.Visible = false;
                 SkinsLabel.Visible = false;
                 ShowGameFilesBtn.Visible = false;
+                UninstallBtn.Visible = false;
             }
 
         }
@@ -90,6 +96,26 @@ namespace titanic_launcher.Tabs
         private void ShowGameFilesBtn_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", $"{Application.StartupPath}clients\\{FindClient(listBox1.Text).Name}");
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(Settings.bClientUpdateRequired)
+            {
+                listBox1.Items.Clear();
+                foreach (Client client in Settings.clients)
+                {
+                    api.getClientImage(client);
+                    if (client.Screenshots.Count < 1)
+                        continue;
+                    if (client.Downloads.Count < 1)
+                        continue;
+                    if (client.Downloads[0] == null)
+                        continue;
+                    listBox1.Items.Add(client.Name);
+                }
+                Settings.bClientUpdateRequired = false;
+            }
         }
     }
 }

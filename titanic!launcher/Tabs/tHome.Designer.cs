@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             listBox1 = new ListBox();
             ClientImage = new PictureBox();
             InstallBtn = new Button();
@@ -35,6 +36,8 @@
             BeatmapsLabel = new Label();
             SkinsLabel = new Label();
             ShowGameFilesBtn = new Button();
+            UninstallBtn = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
             // 
@@ -79,7 +82,7 @@
             // 
             RunBtn.BackColor = Color.Green;
             RunBtn.FlatStyle = FlatStyle.Popup;
-            RunBtn.Location = new Point(382, 283);
+            RunBtn.Location = new Point(650, 253);
             RunBtn.Name = "RunBtn";
             RunBtn.Size = new Size(128, 28);
             RunBtn.TabIndex = 2;
@@ -112,7 +115,7 @@
             // 
             ShowGameFilesBtn.BackColor = Color.LightSeaGreen;
             ShowGameFilesBtn.FlatStyle = FlatStyle.Popup;
-            ShowGameFilesBtn.Location = new Point(516, 283);
+            ShowGameFilesBtn.Location = new Point(650, 220);
             ShowGameFilesBtn.Name = "ShowGameFilesBtn";
             ShowGameFilesBtn.Size = new Size(128, 28);
             ShowGameFilesBtn.TabIndex = 2;
@@ -120,6 +123,23 @@
             ShowGameFilesBtn.UseVisualStyleBackColor = false;
             ShowGameFilesBtn.Visible = false;
             ShowGameFilesBtn.Click += ShowGameFilesBtn_Click;
+            // 
+            // UninstallBtn
+            // 
+            UninstallBtn.BackColor = Color.Red;
+            UninstallBtn.FlatStyle = FlatStyle.Popup;
+            UninstallBtn.Location = new Point(516, 254);
+            UninstallBtn.Name = "UninstallBtn";
+            UninstallBtn.Size = new Size(128, 28);
+            UninstallBtn.TabIndex = 2;
+            UninstallBtn.Text = "Uninstall";
+            UninstallBtn.UseVisualStyleBackColor = false;
+            UninstallBtn.Visible = false;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
             // 
             // tHome
             // 
@@ -129,6 +149,7 @@
             Controls.Add(SkinsLabel);
             Controls.Add(BeatmapsLabel);
             Controls.Add(ShowGameFilesBtn);
+            Controls.Add(UninstallBtn);
             Controls.Add(RunBtn);
             Controls.Add(InstallBtn);
             Controls.Add(ClientImage);
@@ -151,5 +172,7 @@
         private Label BeatmapsLabel;
         private Label SkinsLabel;
         private Button ShowGameFilesBtn;
+        private Button UninstallBtn;
+        private System.Windows.Forms.Timer timer1;
     }
 }
