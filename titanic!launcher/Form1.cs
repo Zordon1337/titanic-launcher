@@ -43,11 +43,58 @@ namespace titanic_launcher
             if (Settings.u != null)
             {
                 Username.Text = Settings.u.Username;
-                PP.Text = $"PP: {((int)(Settings.u.StdScore.PP)).ToString()}";
-                RankedScore.Text = $"Ranked Score: {Settings.u.StdScore.RankedScore.ToString("N0")}";
-                TotalScore.Text = $"Total Score: {Settings.u.StdScore.TotalScore.ToString("N0")}";
-                Accuracy.Text = $"Accuracy: {float.Round(Settings.u.StdScore.Accuracy * 100, 2)}%";
-                LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.StdScore).lvl}";
+                switch (Settings.FavoriteMode)
+                {
+                    case 0:
+                        {
+                            Username.Text = Settings.u.Username;
+                            PP.Text = $"PP: {((int)(Settings.u.StdScore.PP)).ToString()}";
+                            RankedScore.Text = $"Ranked Score: {Settings.u.StdScore.RankedScore.ToString("N0")}";
+                            TotalScore.Text = $"Total Score: {Settings.u.StdScore.TotalScore.ToString("N0")}";
+                            Accuracy.Text = $"Accuracy: {float.Round(Settings.u.StdScore.Accuracy * 100, 2)}%";
+                            LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.StdScore).lvl}";
+                            progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.StdScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.StdScore).required_xp);
+                            this.userImage.ImageLocation = Settings.u.ImagePath;
+                            break;
+                        }
+                    case 1:
+                        {
+                            Username.Text = Settings.u.Username;
+                            PP.Text = $"PP: {((int)(Settings.u.TaikoScore.PP)).ToString()}";
+                            RankedScore.Text = $"Ranked Score: {Settings.u.TaikoScore.RankedScore.ToString("N0")}";
+                            TotalScore.Text = $"Total Score: {Settings.u.TaikoScore.TotalScore.ToString("N0")}";
+                            Accuracy.Text = $"Accuracy: {float.Round(Settings.u.TaikoScore.Accuracy * 100, 2)}%";
+                            LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.TaikoScore).lvl}";
+                            progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.TaikoScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.TaikoScore).required_xp);
+                            this.userImage.ImageLocation = Settings.u.ImagePath;
+                            break;
+                        }
+                    case 2:
+                        {
+                            Username.Text = Settings.u.Username;
+                            PP.Text = $"PP: {((int)(Settings.u.CtbScore.PP)).ToString()}";
+                            RankedScore.Text = $"Ranked Score: {Settings.u.CtbScore.RankedScore.ToString("N0")}";
+                            TotalScore.Text = $"Total Score: {Settings.u.CtbScore.TotalScore.ToString("N0")}";
+                            Accuracy.Text = $"Accuracy: {float.Round(Settings.u.CtbScore.Accuracy * 100, 2)}%";
+                            LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.CtbScore).lvl}";
+                            progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.CtbScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.CtbScore).required_xp);
+                            this.userImage.ImageLocation = Settings.u.ImagePath;
+                            break;
+                        }
+                    case 3:
+                        {
+                            Username.Text = Settings.u.Username;
+                            PP.Text = $"PP: {((int)(Settings.u.ManiaScore.PP)).ToString()}";
+                            RankedScore.Text = $"Ranked Score: {Settings.u.ManiaScore.RankedScore.ToString("N0")}";
+                            TotalScore.Text = $"Total Score: {Settings.u.ManiaScore.TotalScore.ToString("N0")}";
+                            Accuracy.Text = $"Accuracy: {float.Round(Settings.u.ManiaScore.Accuracy * 100, 2)}%";
+                            LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.ManiaScore).lvl}";
+                            progressBar1.Value = (int)((Settings.u.CalculateLevel(Settings.u.ManiaScore).current_xp * 100) / Settings.u.CalculateLevel(Settings.u.ManiaScore).required_xp);
+                            this.userImage.ImageLocation = Settings.u.ImagePath;
+                            break;
+                        }
+
+                }
                 var levelInfo = Settings.u.CalculateLevel(Settings.u.StdScore);
                 progressBar1.Value = (int)(((double)levelInfo.current_xp * 100) / levelInfo.required_xp);
 
