@@ -25,8 +25,8 @@ namespace titanic_launcher
             TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
             Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
             LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
-            progressBar1.Maximum = (int)u.CalculateLevel(u.StdScore).required_xp;
-            progressBar1.Value = (int)u.CalculateLevel(u.StdScore).current_xp;
+            progressBar1.Maximum = (int)u.CalculateLevel(u.StdScore).required_xp/100;
+            progressBar1.Value = (int)u.CalculateLevel(u.StdScore).current_xp/100;
             this.userImage.ImageLocation = u.ImagePath;
 
         }
@@ -51,8 +51,7 @@ namespace titanic_launcher
                         TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
-                        progressBar1.Maximum = (int)u.CalculateLevel(u.StdScore).required_xp;
-                        progressBar1.Value = (int)u.CalculateLevel(u.StdScore).current_xp;
+                        progressBar1.Value = (int)((u.CalculateLevel(u.StdScore).current_xp * 100) / u.CalculateLevel(u.StdScore).required_xp);
                         break;
                     }
                 case 1:
@@ -62,8 +61,7 @@ namespace titanic_launcher
                         TotalScore.Text = $"Total Score: {u.TaikoScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.TaikoScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.TaikoScore).lvl}";
-                        progressBar1.Maximum = (int)u.CalculateLevel(u.TaikoScore).required_xp;
-                        progressBar1.Value = (int)u.CalculateLevel(u.TaikoScore).current_xp;
+                        progressBar1.Value = (int)((u.CalculateLevel(u.TaikoScore).current_xp * 100) / u.CalculateLevel(u.TaikoScore).required_xp);
                         break;
                     }
                 case 2:
@@ -73,8 +71,7 @@ namespace titanic_launcher
                         TotalScore.Text = $"Total Score: {u.CtbScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.CtbScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.CtbScore).lvl}";
-                        progressBar1.Maximum = (int)u.CalculateLevel(u.CtbScore).required_xp;
-                        progressBar1.Value = (int)u.CalculateLevel(u.CtbScore).current_xp;
+                        progressBar1.Value = (int)((u.CalculateLevel(u.CtbScore).current_xp * 100) / u.CalculateLevel(u.CtbScore).required_xp);
                         break;
                     }
                 case 3:
@@ -84,8 +81,7 @@ namespace titanic_launcher
                         TotalScore.Text = $"Total Score: {u.ManiaScore.TotalScore.ToString("N0")}";
                         Accuracy.Text = $"Accuracy: {float.Round(u.ManiaScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.ManiaScore).lvl}";
-                        progressBar1.Maximum = (int)u.CalculateLevel(u.ManiaScore).required_xp;
-                        progressBar1.Value = (int)u.CalculateLevel(u.ManiaScore).current_xp;
+                        progressBar1.Value = (int)((u.CalculateLevel(u.ManiaScore).current_xp * 100) / u.CalculateLevel(u.ManiaScore).required_xp);
                         break;
                     }
 

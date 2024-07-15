@@ -28,6 +28,8 @@ namespace titanic_launcher.Tabs
             foreach (Client client in clients)
             {
                 api.getClientImage(client);
+                if (client.Screenshots.Count == 0)
+                    continue;
                 listBox1.Items.Add(client.Name);
             }
         }
