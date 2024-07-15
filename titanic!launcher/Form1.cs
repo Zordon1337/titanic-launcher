@@ -25,8 +25,10 @@ namespace titanic_launcher
             TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
             Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
             LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
+            progressBar1.Maximum = (int)u.CalculateLevel(u.StdScore).required_xp;
+            progressBar1.Value = (int)u.CalculateLevel(u.StdScore).current_xp;
             this.userImage.ImageLocation = u.ImagePath;
-            
+
         }
 
         private void userInfopanel_Paint(object sender, PaintEventArgs e)
@@ -101,6 +103,11 @@ namespace titanic_launcher
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LevelLabel_Click(object sender, EventArgs e)
         {
 
         }

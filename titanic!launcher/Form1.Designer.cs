@@ -81,6 +81,7 @@
             LevelLabel.Size = new Size(40, 15);
             LevelLabel.TabIndex = 2;
             LevelLabel.Text = "Level: ";
+            LevelLabel.Click += LevelLabel_Click;
             // 
             // Accuracy
             // 
