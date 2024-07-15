@@ -22,11 +22,7 @@ namespace titanic_launcher.Tabs
             long currentxp = 0; // current xp
             Level currentlevel = new Level();
             int expectedlevel = (int)numericUpDown1.Value;
-            if(expectedlevel <= currentlevel.lvl)
-            {
-                MessageBox.Show("What are you trying to do huh?", "wtf", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
@@ -54,6 +50,11 @@ namespace titanic_launcher.Tabs
                         currentlevel = Settings.u.CalculateLevel(Settings.u.ManiaScore);
                         break;
                     }
+            }
+            if (expectedlevel <= currentlevel.lvl)
+            {
+                MessageBox.Show("What are you trying to do huh?", "wtf", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             long currentlevelprogress = 0; //xp required to have current level
             for(int i = 1;i < currentlevel.lvl;i++)

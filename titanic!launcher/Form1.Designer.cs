@@ -197,7 +197,7 @@
             // 
             // StatsTimer
             // 
-            StatsTimer.Interval = 1000;
+            StatsTimer.Interval = 5000;
             StatsTimer.Tick += StatsTimer_Tick;
             // 
             // Form1
