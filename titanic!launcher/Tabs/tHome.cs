@@ -90,6 +90,7 @@ namespace titanic_launcher.Tabs
 
         private void RunBtn_Click(object sender, EventArgs e)
         {
+            FindClient(listBox1.Text).LastPlayed = DateTime.UtcNow.ToString();
             FindClient(listBox1.Text).Run();
         }
 
@@ -97,7 +98,10 @@ namespace titanic_launcher.Tabs
         {
             Process.Start("explorer.exe", $"{Application.StartupPath}clients\\{FindClient(listBox1.Text).Name}");
         }
-
+        private string FormatClient(Client cl)
+        {
+            return FindClient(listBox1.Text).LastPlayed == null ? "Never" : FindClient(listBox1.Text).LastPlayed;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             if(Settings.bClientUpdateRequired)
@@ -115,6 +119,19 @@ namespace titanic_launcher.Tabs
                     listBox1.Items.Add(client.Name);
                 }
                 Settings.bClientUpdateRequired = false;
+            }
+            if (this.listBox1.SelectedIndex == -1)
+                return;
+            //if (!FindClient(listBox1.Text).isInstalled())
+            //   return;
+            this.label1.Visible = true;
+            this.label1.Text = $"Last Played: {FormatClient(FindClient(listBox1.Text))}";
+            if(FindClient(listBox1.Text).isInstalled())
+            {
+                this.label1.Location = new Point(193, 281);
+            } else
+            {
+                this.label1.Location = new Point(193, 251);
             }
         }
     }

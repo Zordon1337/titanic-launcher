@@ -44,6 +44,8 @@ namespace titanic_launcher
 
         [JsonPropertyName("actions")]
         public List<string> Actions { get; set; }
+
+        public string LastPlayed { get; set; }
         public bool isInstalled()
         {
             if(!Directory.Exists("./clients"))

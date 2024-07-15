@@ -38,6 +38,7 @@
             ShowGameFilesBtn = new Button();
             UninstallBtn = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             // 
             InstallBtn.BackColor = Color.Blue;
             InstallBtn.FlatStyle = FlatStyle.Popup;
-            InstallBtn.Location = new Point(650, 283);
+            InstallBtn.Location = new Point(650, 287);
             InstallBtn.Name = "InstallBtn";
             InstallBtn.Size = new Size(128, 28);
             InstallBtn.TabIndex = 2;
@@ -82,7 +83,7 @@
             // 
             RunBtn.BackColor = Color.Green;
             RunBtn.FlatStyle = FlatStyle.Popup;
-            RunBtn.Location = new Point(650, 253);
+            RunBtn.Location = new Point(193, 220);
             RunBtn.Name = "RunBtn";
             RunBtn.Size = new Size(128, 28);
             RunBtn.TabIndex = 2;
@@ -115,7 +116,7 @@
             // 
             ShowGameFilesBtn.BackColor = Color.LightSeaGreen;
             ShowGameFilesBtn.FlatStyle = FlatStyle.Popup;
-            ShowGameFilesBtn.Location = new Point(650, 220);
+            ShowGameFilesBtn.Location = new Point(327, 220);
             ShowGameFilesBtn.Name = "ShowGameFilesBtn";
             ShowGameFilesBtn.Size = new Size(128, 28);
             ShowGameFilesBtn.TabIndex = 2;
@@ -128,7 +129,7 @@
             // 
             UninstallBtn.BackColor = Color.Red;
             UninstallBtn.FlatStyle = FlatStyle.Popup;
-            UninstallBtn.Location = new Point(516, 254);
+            UninstallBtn.Location = new Point(461, 220);
             UninstallBtn.Name = "UninstallBtn";
             UninstallBtn.Size = new Size(128, 28);
             UninstallBtn.TabIndex = 2;
@@ -141,12 +142,23 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(193, 281);
+            label1.Name = "label1";
+            label1.Size = new Size(72, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Last Played: ";
+            label1.Visible = false;
+            // 
             // tHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(11, 11, 11);
             Controls.Add(SkinsLabel);
+            Controls.Add(label1);
             Controls.Add(BeatmapsLabel);
             Controls.Add(ShowGameFilesBtn);
             Controls.Add(UninstallBtn);
@@ -174,5 +186,6 @@
         private Button ShowGameFilesBtn;
         private Button UninstallBtn;
         private System.Windows.Forms.Timer timer1;
+        private Label label1;
     }
 }
