@@ -29,23 +29,32 @@ namespace titanic_launcher.Tabs
             foreach (Client client in clients)
             {
                 api.getClientImage(client);
+                if (client.Screenshots.Count < 1)
+                    continue;
+                if (client.Downloads.Count < 1)
+                    continue;
+                if (client.Downloads[0] == null)
+                    continue;
                 listBox1.Items.Add(client.Name);
             }
         }
-
+        private Client FindClient(string value)
+        {
+            return clients.Find(x => x.Name == value);
+        }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            ClientImage.ImageLocation = api.getClientImage(clients[listBox1.SelectedIndex-1]);
-            if (clients[listBox1.SelectedIndex -1].isInstalled())
+            
+            ClientImage.ImageLocation = api.getClientImage(FindClient(listBox1.Text));
+            if (FindClient(listBox1.Text).isInstalled())
             {
                 InstallBtn.Visible = false;
                 RunBtn.Location = installpos;
                 RunBtn.Visible = true;
                 BeatmapsLabel.Visible = true;
                 SkinsLabel.Visible = true;
-                SkinsLabel.Text = $"Skins: {clients[listBox1.SelectedIndex-1].getSkins()}";
-                BeatmapsLabel.Text = $"Beatmaps: {clients[listBox1.SelectedIndex-1].getMaps()}";
+                SkinsLabel.Text = $"Skins: {FindClient(listBox1.Text).getSkins()}";
+                BeatmapsLabel.Text = $"Beatmaps: {FindClient(listBox1.Text).getMaps()}";
                 ShowGameFilesBtn.Visible = true;
                 ShowGameFilesBtn.Location = new Point(327, 220);
             }
@@ -69,18 +78,18 @@ namespace titanic_launcher.Tabs
         private void button1_Click(object sender, EventArgs e)
         {
             new Thread(() => { MessageBox.Show("Client downloading started.\nIt may take some time\nDepends if contabo has good day\nor if you have good internet.", "Titanic!Launcher"); }).Start();
-            clients[listBox1.SelectedIndex-1].Install();
+            FindClient(listBox1.Text).Install();
             listBox1_SelectedIndexChanged(sender, e);
         }
 
         private void RunBtn_Click(object sender, EventArgs e)
         {
-            clients[listBox1.SelectedIndex-1].Run();
+            FindClient(listBox1.Text).Run();
         }
 
         private void ShowGameFilesBtn_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", $"{Application.StartupPath}clients\\{clients[listBox1.SelectedIndex-1].Name}");
+            Process.Start("explorer.exe", $"{Application.StartupPath}clients\\{FindClient(listBox1.Text).Name}");
         }
     }
 }
