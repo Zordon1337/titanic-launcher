@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             userInfopanel = new Panel();
+            progressBar1 = new ProgressBar();
+            LevelLabel = new Label();
             Accuracy = new Label();
             PP = new Label();
             RankedScore = new Label();
@@ -39,7 +41,6 @@
             tabSettings = new Button();
             tabHome = new Button();
             container = new Panel();
-            LevelLabel = new Label();
             userInfopanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
             TabsPanel.SuspendLayout();
@@ -48,6 +49,7 @@
             // userInfopanel
             // 
             userInfopanel.BorderStyle = BorderStyle.FixedSingle;
+            userInfopanel.Controls.Add(progressBar1);
             userInfopanel.Controls.Add(LevelLabel);
             userInfopanel.Controls.Add(Accuracy);
             userInfopanel.Controls.Add(PP);
@@ -60,6 +62,25 @@
             userInfopanel.Size = new Size(798, 86);
             userInfopanel.TabIndex = 0;
             userInfopanel.Paint += userInfopanel_Paint;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(553, 20);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(240, 15);
+            progressBar1.Style = ProgressBarStyle.Continuous;
+            progressBar1.TabIndex = 3;
+            progressBar1.Value = 50;
+            progressBar1.Click += progressBar1_Click;
+            // 
+            // LevelLabel
+            // 
+            LevelLabel.AutoSize = true;
+            LevelLabel.Location = new Point(553, 5);
+            LevelLabel.Name = "LevelLabel";
+            LevelLabel.Size = new Size(40, 15);
+            LevelLabel.TabIndex = 2;
+            LevelLabel.Text = "Level: ";
             // 
             // Accuracy
             // 
@@ -157,15 +178,6 @@
             container.TabIndex = 2;
             container.Paint += container_Paint;
             // 
-            // LevelLabel
-            // 
-            LevelLabel.AutoSize = true;
-            LevelLabel.Location = new Point(578, 5);
-            LevelLabel.Name = "LevelLabel";
-            LevelLabel.Size = new Size(40, 15);
-            LevelLabel.TabIndex = 2;
-            LevelLabel.Text = "Level: ";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -202,5 +214,6 @@
         private Panel container;
         private Label Accuracy;
         private Label LevelLabel;
+        private ProgressBar progressBar1;
     }
 }

@@ -21,5 +21,10 @@ namespace titanic_launcher.Tabs
         {
 
         }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            Settings.bHideLevelProgress = !Settings.bHideLevelProgress;
+        }
     }
 }

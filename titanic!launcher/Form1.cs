@@ -1,7 +1,9 @@
+using System.Runtime.InteropServices;
 using titanic_launcher.Tabs;
 
 namespace titanic_launcher
 {
+
     public partial class Form1 : Form
     {
 
@@ -24,11 +26,12 @@ namespace titanic_launcher
             Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
             LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
             this.userImage.ImageLocation = u.ImagePath;
+            
         }
 
         private void userInfopanel_Paint(object sender, PaintEventArgs e)
         {
-
+            progressBar1.Visible = !Settings.bHideLevelProgress;
         }
         private void onModeChange(object sender, EventArgs e)
         {
@@ -39,7 +42,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.StdScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.StdScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.StdScore.TotalScore.ToString("N0")}";
-                        Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100,2)}%";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.StdScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.StdScore).lvl}";
                         break;
                     }
@@ -48,7 +51,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.TaikoScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.TaikoScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.TaikoScore.TotalScore.ToString("N0")}";
-                        Accuracy.Text = $"Accuracy: {float.Round(u.TaikoScore.Accuracy * 100,2)}%";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.TaikoScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.TaikoScore).lvl}";
                         break;
                     }
@@ -57,7 +60,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.CtbScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.CtbScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.CtbScore.TotalScore.ToString("N0")}";
-                        Accuracy.Text = $"Accuracy: {float.Round(u.CtbScore.Accuracy * 100,2)}%";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.CtbScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.CtbScore).lvl}";
                         break;
                     }
@@ -66,7 +69,7 @@ namespace titanic_launcher
                         PP.Text = $"PP: {((int)(u.ManiaScore.PP)).ToString()}";
                         RankedScore.Text = $"Ranked Score: {u.ManiaScore.RankedScore.ToString("N0")}";
                         TotalScore.Text = $"Total Score: {u.ManiaScore.TotalScore.ToString("N0")}";
-                        Accuracy.Text = $"Accuracy: {float.Round(u.ManiaScore.Accuracy * 100,2)}%";
+                        Accuracy.Text = $"Accuracy: {float.Round(u.ManiaScore.Accuracy * 100, 2)}%";
                         LevelLabel.Text = $"Level: {u.CalculateLevel(u.ManiaScore).lvl}";
                         break;
                     }
@@ -89,6 +92,29 @@ namespace titanic_launcher
             tSettings.comboBox1.SelectedIndexChanged += this.onModeChange;
             container.Controls.Clear();
             container.Controls.Add(tSettings);
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+    public static class Utils
+    {
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+        public enum Color { None, Green, Red, Yellow }
+
+        public static void SetState(this ProgressBar pBar, Color newColor, int newValue)
+        {
+            if (pBar.Value == pBar.Minimum)  // If it has not been painted yet, paint the whole thing using defualt color...
+            {                                // Max move is instant and this keeps the initial move from going out slowly 
+                pBar.Value = pBar.Maximum;   // in wrong color on first painting
+                SendMessage(pBar.Handle, 1040, (IntPtr)(int)Color.Green, IntPtr.Zero);
+            }
+            pBar.Value = newValue;
+            SendMessage(pBar.Handle, 1040, (IntPtr)(int)Color.Green, IntPtr.Zero);     // run it out to the correct spot in default
+            SendMessage(pBar.Handle, 1040, (IntPtr)(int)newColor, IntPtr.Zero);        // now turn it the correct color
         }
     }
 }

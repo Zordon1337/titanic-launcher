@@ -11,6 +11,8 @@ Global
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
+		TestRelease|Any CPU = TestRelease|Any CPU
+		TestRelease|x86 = TestRelease|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{48A45304-901F-4056-A7A5-DADF1B2CB706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{48A45304-901F-4056-A7A5-DADF1B2CB706}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48A45304-901F-4056-A7A5-DADF1B2CB706}.Release|x86.ActiveCfg = Release|x86
 		{48A45304-901F-4056-A7A5-DADF1B2CB706}.Release|x86.Build.0 = Release|x86
+		{48A45304-901F-4056-A7A5-DADF1B2CB706}.TestRelease|Any CPU.ActiveCfg = TestRelease|Any CPU
+		{48A45304-901F-4056-A7A5-DADF1B2CB706}.TestRelease|Any CPU.Build.0 = TestRelease|Any CPU
+		{48A45304-901F-4056-A7A5-DADF1B2CB706}.TestRelease|x86.ActiveCfg = TestRelease|x86
+		{48A45304-901F-4056-A7A5-DADF1B2CB706}.TestRelease|x86.Build.0 = TestRelease|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -36,13 +36,16 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
+            checkBox1.Checked = true;
+            checkBox1.CheckState = CheckState.Checked;
             checkBox1.FlatStyle = FlatStyle.Flat;
             checkBox1.Location = new Point(16, 289);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(80, 19);
+            checkBox1.Size = new Size(123, 19);
             checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
+            checkBox1.Text = "Hide level progress";
             checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckStateChanged += checkBox1_CheckStateChanged;
             // 
             // comboBox1
             // 
