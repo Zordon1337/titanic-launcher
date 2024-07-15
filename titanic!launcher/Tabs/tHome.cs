@@ -20,7 +20,7 @@ namespace titanic_launcher.Tabs
             InitializeComponent();
             Settings.ReadFromConfig();
             Settings.clients = api.getClients();
-            timer1.Start();
+            RefreshManifest.Start();
         }
 
         private void tHome_Load(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace titanic_launcher.Tabs
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(Settings.bClientUpdateRequired)
+            if (Settings.bClientUpdateRequired)
             {
                 listBox1.Items.Clear();
                 foreach (Client client in Settings.clients)
@@ -126,13 +126,19 @@ namespace titanic_launcher.Tabs
             //   return;
             this.label1.Visible = true;
             this.label1.Text = $"Last Played: {FormatClient(FindClient(listBox1.Text))}";
-            if(FindClient(listBox1.Text).isInstalled())
+            if (FindClient(listBox1.Text).isInstalled())
             {
                 this.label1.Location = new Point(193, 281);
-            } else
+            }
+            else
             {
                 this.label1.Location = new Point(193, 251);
             }
+        }
+
+        private void UninstallBtn_Click(object sender, EventArgs e)
+        {
+            Directory.Delete($"./clients/{FindClient(listBox1.Text).Name}/", true);
         }
     }
 }

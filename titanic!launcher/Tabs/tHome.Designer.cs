@@ -37,7 +37,7 @@
             SkinsLabel = new Label();
             ShowGameFilesBtn = new Button();
             UninstallBtn = new Button();
-            timer1 = new System.Windows.Forms.Timer(components);
+            RefreshManifest = new System.Windows.Forms.Timer(components);
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
@@ -136,11 +136,12 @@
             UninstallBtn.Text = "Uninstall";
             UninstallBtn.UseVisualStyleBackColor = false;
             UninstallBtn.Visible = false;
+            UninstallBtn.Click += UninstallBtn_Click;
             // 
-            // timer1
+            // RefreshManifest
             // 
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
+            RefreshManifest.Interval = 1000;
+            RefreshManifest.Tick += timer1_Tick;
             // 
             // label1
             // 
@@ -185,7 +186,7 @@
         private Label SkinsLabel;
         private Button ShowGameFilesBtn;
         private Button UninstallBtn;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer RefreshManifest;
         private Label label1;
     }
 }
