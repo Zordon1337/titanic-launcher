@@ -39,6 +39,7 @@
             UninstallBtn = new Button();
             RefreshManifest = new System.Windows.Forms.Timer(components);
             label1 = new Label();
+            RefreshDetails = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
             // 
@@ -153,6 +154,10 @@
             label1.Text = "Last Played: ";
             label1.Visible = false;
             // 
+            // RefreshDetails
+            // 
+            RefreshDetails.Tick += timer1_Tick_1;
+            // 
             // tHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -188,5 +193,6 @@
         private Button UninstallBtn;
         private System.Windows.Forms.Timer RefreshManifest;
         private Label label1;
+        private System.Windows.Forms.Timer RefreshDetails;
     }
 }
