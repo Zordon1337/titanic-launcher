@@ -12,7 +12,7 @@ namespace titanic_launcher
     public static readonly string version_ = ".test";
 #elif DEBUG
         public static readonly string version_ = ".dev";
-#elif RELEASE
+#elif PUBLIC
     public static readonly string version_ = "";
 #endif
 
