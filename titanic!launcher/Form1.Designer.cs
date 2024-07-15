@@ -153,7 +153,7 @@
             // 
             tabSettings.BackColor = Color.FromArgb(192, 0, 0);
             tabSettings.FlatStyle = FlatStyle.Popup;
-            tabSettings.Location = new Point(118, -1);
+            tabSettings.Location = new Point(109, -1);
             tabSettings.Name = "tabSettings";
             tabSettings.Size = new Size(112, 38);
             tabSettings.TabIndex = 0;

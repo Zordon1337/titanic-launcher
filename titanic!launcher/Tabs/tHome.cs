@@ -70,6 +70,7 @@ namespace titanic_launcher.Tabs
 
         private void button1_Click(object sender, EventArgs e)
         {
+            new Thread(() => { MessageBox.Show("Client downloading started.\nIt may take some time\nDepends if contabo has good day\nor if you have good internet.", "Titanic!Launcher"); }).Start();
             clients[listBox1.SelectedIndex].Install();
             listBox1_SelectedIndexChanged(sender, e);
         }

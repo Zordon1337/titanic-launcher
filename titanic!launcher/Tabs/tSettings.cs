@@ -55,9 +55,16 @@ namespace titanic_launcher.Tabs
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            if (Settings.u.Username == textBox1.Text)
+            {
+                MessageBox.Show("Maybe change username in first place?", "what are trying to do");
+                return;
+            }
             bool smethod = Settings.u == null;
             if (!smethod)
             {
+
                 string olduser = Settings.u.Username;
                 var thr = new Thread(() =>
                 {
