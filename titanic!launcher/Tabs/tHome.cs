@@ -31,6 +31,8 @@ namespace titanic_launcher.Tabs
                 api.getClientImage(client);
                 if (client.Screenshots.Count == 0)
                     continue;
+                if (client.Downloads.Count == 0)
+                    continue;
                 listBox1.Items.Add(client.Name);
             }
         }
