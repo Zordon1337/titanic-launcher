@@ -70,52 +70,58 @@ namespace titanic_launcher
         }
         public static User getUser(string id)
         {
-            string weboutput = _c.DownloadString("https://osu.lekuru.xyz/api/profile/" + id);
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true
-            };
+                string weboutput = _c.DownloadString("https://osu.lekuru.xyz/api/profile/" + id);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
 
-            Root root = JsonSerializer.Deserialize<Root>(weboutput, options);
+                Root root = JsonSerializer.Deserialize<Root>(weboutput, options);
 
-            if (root == null || root.Stats == null || root.Stats.Count < 4)
-                throw new Exception("Invalid JSON data.");
+                if (root == null || root.Stats == null || root.Stats.Count < 4)
+                    throw new Exception("Invalid JSON data.");
 
-            User user = new User
+                User user = new User
+                {
+                    Username = root.Name,
+                    Id = root.id,
+                    StdScore = new Score
+                    {
+                        TotalScore = root.Stats[0].tscore,
+                        RankedScore = root.Stats[0].rscore,
+                        PP = root.Stats[0].pp,
+                        Accuracy = (float)root.Stats[0].acc
+                    },
+                    TaikoScore = new Score
+                    {
+                        TotalScore = root.Stats[1].tscore,
+                        RankedScore = root.Stats[1].rscore,
+                        PP = root.Stats[1].pp,
+                        Accuracy = (float)root.Stats[1].acc
+                    },
+                    CtbScore = new Score
+                    {
+                        TotalScore = root.Stats[2].tscore,
+                        RankedScore = root.Stats[2].rscore,
+                        PP = root.Stats[2].pp,
+                        Accuracy = (float)root.Stats[2].acc
+                    },
+                    ManiaScore = new Score
+                    {
+                        TotalScore = root.Stats[3].tscore,
+                        RankedScore = root.Stats[3].rscore,
+                        PP = root.Stats[3].pp,
+                        Accuracy = (float)root.Stats[3].acc
+                    }
+                };
+                user.ImagePath = getImage(user.Id);
+                return user;
+            } catch
             {
-                Username = root.Name,
-                Id = root.id,
-                StdScore = new Score
-                {
-                    TotalScore = root.Stats[0].tscore,
-                    RankedScore = root.Stats[0].rscore,
-                    PP = root.Stats[0].pp,
-                    Accuracy = (float)root.Stats[0].acc
-                },
-                TaikoScore = new Score
-                {
-                    TotalScore = root.Stats[1].tscore,
-                    RankedScore = root.Stats[1].rscore,
-                    PP = root.Stats[1].pp,
-                    Accuracy = (float)root.Stats[1].acc
-                },
-                CtbScore = new Score
-                {
-                    TotalScore = root.Stats[2].tscore,
-                    RankedScore = root.Stats[2].rscore,
-                    PP = root.Stats[2].pp,
-                    Accuracy = (float)root.Stats[2].acc
-                },
-                ManiaScore = new Score
-                {
-                    TotalScore = root.Stats[3].tscore,
-                    RankedScore = root.Stats[3].rscore,
-                    PP = root.Stats[3].pp,
-                    Accuracy = (float)root.Stats[3].acc
-                }
-            };
-            user.ImagePath = getImage(user.Id);
-            return user;
+                return null;
+            }
         }
         public static List<Client> getClients()
         {

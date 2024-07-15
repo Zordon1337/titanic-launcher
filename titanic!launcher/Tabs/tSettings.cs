@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,6 +67,15 @@ namespace titanic_launcher.Tabs
             }
 
             bool smethod = Settings.u == null;
+            try
+            {
+                new WebClient().DownloadString($"https://osu.lekuru.xyz/api/profile/{Settings.sUsername}");
+            } catch
+            {
+
+                MessageBox.Show("Please enter correct username", "Ah shit, here we go again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!smethod)
             {
 

@@ -91,7 +91,7 @@ namespace titanic_launcher.Tabs
 
         private void RunBtn_Click(object sender, EventArgs e)
         {
-            FindClient(listBox1.Text).LastPlayed = DateTime.UtcNow.ToString();
+            FindClient(listBox1.Text).LastPlayed = DateTime.Now.ToString();
             FindClient(listBox1.Text).Run();
         }
 

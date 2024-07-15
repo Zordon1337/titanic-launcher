@@ -19,6 +19,11 @@ namespace titanic_launcher.Tabs
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (Settings.u == null)
+            {
+                MessageBox.Show("It work if you would be logged in","Very critical error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             long currentxp = 0; // current xp
             Level currentlevel = new Level();
             int expectedlevel = (int)numericUpDown1.Value;
