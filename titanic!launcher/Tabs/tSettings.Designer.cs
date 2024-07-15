@@ -34,6 +34,7 @@
             label2 = new Label();
             label3 = new Label();
             textBox1 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // checkBox1
@@ -105,11 +106,23 @@
             textBox1.TabIndex = 4;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
+            // button1
+            // 
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(227, 58);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 26);
+            button1.TabIndex = 5;
+            button1.Text = "Set";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // tSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(11, 11, 11);
+            Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label2);
             Controls.Add(label3);
@@ -131,5 +144,6 @@
         public CheckBox checkBox1;
         private Label label3;
         public TextBox textBox1;
+        private Button button1;
     }
 }

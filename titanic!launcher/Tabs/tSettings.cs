@@ -15,7 +15,7 @@ namespace titanic_launcher.Tabs
         public tSettings()
         {
             InitializeComponent();
-
+            
         }
 
         private void tSettings_Load(object sender, EventArgs e)
@@ -48,7 +48,38 @@ namespace titanic_launcher.Tabs
         {
             Settings.sUsername = textBox1.Text;
 
-            Settings.u = api.getUser(Settings.sUsername);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool smethod = Settings.u == null;
+            if (!smethod)
+            {
+                string olduser = Settings.u.Username;
+                var thr = new Thread(() =>
+                {
+                    Settings.u = api.getUser(Settings.sUsername);
+
+                });
+                thr.Start();
+                while (Settings.u.Username == olduser)
+                { }
+            } else
+            {
+                var thr = new Thread(() =>
+                {
+                    Settings.u = api.getUser(Settings.sUsername);
+
+                });
+                thr.Start();
+                while (Settings.u == null)
+                { }
+            }
+
+            
+
+            this.comboBox1.SelectedIndex = 1;
             this.comboBox1.SelectedIndex = 0;
         }
     }
