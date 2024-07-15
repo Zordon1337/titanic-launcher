@@ -73,6 +73,16 @@ namespace titanic_launcher
             }
             return Directory.GetDirectories($"./clients/{this.Name}/Songs").Length;
         }
+        public int getSkins()
+        {
+            if (!this.isInstalled())
+                return -1;
+            if (!Directory.Exists($"./clients/{this.Name}/Skins"))
+            {
+                return 0;
+            }
+            return Directory.GetDirectories($"./clients/{this.Name}/Skins").Length;
+        }
         public void Run()
         {
             string filename = "";
