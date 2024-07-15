@@ -18,5 +18,7 @@ namespace titanic_launcher
 
         public static readonly string version = "b5" + version_;
         public static bool bHideLevelProgress = true;
+        public static string sUsername = "";
+        public static User u = null;
     }
 }

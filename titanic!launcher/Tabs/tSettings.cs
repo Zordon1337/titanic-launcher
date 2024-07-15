@@ -38,5 +38,16 @@ namespace titanic_launcher.Tabs
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Settings.sUsername = textBox1.Text;
+            Settings.u = api.getUser(Settings.sUsername);
+        }
     }
 }

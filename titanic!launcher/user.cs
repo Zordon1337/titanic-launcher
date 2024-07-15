@@ -127,6 +127,7 @@ namespace titanic_launcher
             99999999999L
         };
         public string Username { get; set; }
+        public int Id { get; set; }
         public string ImagePath { get; set; }
         public Score StdScore { get; set; }
         public Score CtbScore { get; set; }
@@ -176,6 +177,7 @@ namespace titanic_launcher
     public class Root
     {
         public string Name { get; set; }
+        public int id { get; set; }
         public List<Stat> Stats { get; set; }
     }
 

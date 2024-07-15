@@ -32,6 +32,8 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // checkBox1
@@ -69,6 +71,7 @@
             label1.Size = new Size(156, 20);
             label1.TabIndex = 2;
             label1.Text = "User Stats Gamemode";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -80,12 +83,36 @@
             label2.Click += label2_Click;
             label2.Paint += label2_Paint;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft YaHei", 10F);
+            label3.Location = new Point(38, 61);
+            label3.Name = "label3";
+            label3.Size = new Size(76, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Username";
+            label3.Click += label1_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.Black;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.ForeColor = Color.White;
+            textBox1.Location = new Point(120, 61);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 4;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // tSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(11, 11, 11);
+            Controls.Add(textBox1);
             Controls.Add(label2);
+            Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(comboBox1);
             Controls.Add(checkBox1);
@@ -102,5 +129,7 @@
         public ComboBox comboBox1;
         private Label label2;
         public CheckBox checkBox1;
+        private Label label3;
+        private TextBox textBox1;
     }
 }
