@@ -137,25 +137,30 @@ namespace titanic_launcher
         {
             Level lvl = new Level();
             long xpscore = sc.TotalScore;
-            long required = 0;
-            foreach(var lvl2 in toNextLevel)
-            {
-                required += lvl2;
-            }
+            long cumulativeXP = 0;
+
             for (int i = 0; i < toNextLevel.Length; i++)
             {
-                if (xpscore - toNextLevel[i] < 0)
+                if (xpscore < toNextLevel[i])
                 {
                     lvl.lvl = i + 1;
-                    lvl.current_xp = sc.TotalScore;
-                    lvl.required_xp = required;
+                    lvl.current_xp = xpscore;
+                    lvl.required_xp = toNextLevel[i];
 
                     return lvl;
                 }
                 xpscore -= toNextLevel[i];
+                cumulativeXP += toNextLevel[i];
             }
+
+            lvl.lvl = toNextLevel.Length;
+            lvl.current_xp = xpscore;
+            lvl.required_xp = toNextLevel[toNextLevel.Length - 1];
+
             return lvl;
         }
+
+
     }
 
     public class Score

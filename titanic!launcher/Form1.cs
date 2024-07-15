@@ -34,8 +34,8 @@ namespace titanic_launcher
                 TotalScore.Text = $"Total Score: {Settings.u.StdScore.TotalScore.ToString("N0")}";
                 Accuracy.Text = $"Accuracy: {float.Round(Settings.u.StdScore.Accuracy * 100, 2)}%";
                 LevelLabel.Text = $"Level: {Settings.u.CalculateLevel(Settings.u.StdScore).lvl}";
-                progressBar1.Maximum = (int)Settings.u.CalculateLevel(Settings.u.StdScore).required_xp / 100;
-                progressBar1.Value = (int)Settings.u.CalculateLevel(Settings.u.StdScore).current_xp / 100;
+                var levelInfo = Settings.u.CalculateLevel(Settings.u.StdScore);
+                progressBar1.Value = (int)(((double)levelInfo.current_xp * 100) / levelInfo.required_xp);
 
                 this.userImage.ImageLocation = Settings.u.ImagePath;
             }
