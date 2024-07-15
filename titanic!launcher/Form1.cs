@@ -12,11 +12,16 @@ namespace titanic_launcher
         tSettings tSettings = new tSettings();
         public Form1()
         {
+            Settings.ReadFromConfig();
             InitializeComponent();
             container.Controls.Clear();
             container.Controls.Add(tHome);
+            this.FormClosed += FormClosing;
         }
-
+        private void FormClosing(object sender, EventArgs e)
+        {
+            Settings.WriteToConfig();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             if (Settings.sUsername != "")

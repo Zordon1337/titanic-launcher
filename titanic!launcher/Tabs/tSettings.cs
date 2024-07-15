@@ -15,7 +15,7 @@ namespace titanic_launcher.Tabs
         public tSettings()
         {
             InitializeComponent();
-            
+            this.textBox1.Text = Settings.sUsername;
         }
 
         private void tSettings_Load(object sender, EventArgs e)

@@ -20,5 +20,25 @@ namespace titanic_launcher
         public static bool bHideLevelProgress = true;
         public static string sUsername = "";
         public static User u = null;
+        static string tr = "true";
+        static string fl = "false";
+        private static string BoolToString(bool value)
+        {
+            return value ? "true" : "false";
+        }
+        public static void WriteToConfig()
+        {
+            File.WriteAllText("./config.tl",$"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}");
+        }
+        public static void ReadFromConfig() 
+        {
+            if(File.Exists("./config.tl"))
+            {
+                string config = File.ReadAllText("./config.tl");
+                string[] lines = config.Split(new char[] { '\n' });
+                sUsername = lines[0];
+                bHideLevelProgress = lines[1] == "true";
+            }
+        }
     }
 }
