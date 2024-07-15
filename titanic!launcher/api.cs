@@ -73,6 +73,28 @@ namespace titanic_launcher
             List<Client> downloads = JsonSerializer.Deserialize<List<Client>>(_c.DownloadString("https://osu.lekuru.xyz/api/clients"));
             return downloads;
         }
+        public static string getClientImage(Client cl)
+        {
+
+            if (!System.IO.Directory.Exists("./images"))
+                System.IO.Directory.CreateDirectory("./images");
+            if(System.IO.File.Exists($"./images/{cl.Name}.png"))
+                return $"./images/{cl.Name}.png";
+            if (cl.Screenshots.Count == 0)
+                return $"";
+            if(!cl.Screenshots[0].Src.Contains("https"))
+            {
+                //_c.DownloadFile("https://osu.lekuru.xyz"+cl.Screenshots[0].Src, $".//images/{cl.Name}.png");
+                return "https://osu.lekuru.xyz" + cl.Screenshots[0].Src;
+            } else
+            {
+                // _c.DownloadFile(cl.Screenshots[0].Src, $".//images/{cl.Name}.png");
+                return (cl.Screenshots[0].Src);
+            }
+            
+            Thread.Sleep(2000);
+            return $"./images/{cl.Name}.png";
+        }
     }
 
     

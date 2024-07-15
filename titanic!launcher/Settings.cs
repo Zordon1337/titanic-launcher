@@ -8,16 +8,15 @@ namespace titanic_launcher
 {
     internal class Settings
     {
-        public static readonly string version = "b1"+version_;
 #if TESTRELEASE
-        public static readonly string version_ = ".release";
-#endif
-#if DEBUG
+    public static readonly string version_ = ".release";
+#elif DEBUG
         public static readonly string version_ = ".dev";
+#elif RELEASE
+    public static readonly string version_ = "";
 #endif
-#if RELEASE
-        public static readonly string version_ = "";
-#endif
+
+        public static readonly string version = "b1" + version_;
         public static bool bHideLevelProgress = true;
     }
 }

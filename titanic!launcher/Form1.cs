@@ -31,6 +31,11 @@ namespace titanic_launcher
 
         private void userInfopanel_Paint(object sender, PaintEventArgs e)
         {
+
+            progressBar1.Visible = !Settings.bHideLevelProgress;
+        }
+        private void onProgressCheck(object sender, EventArgs e)
+        {
             progressBar1.Visible = !Settings.bHideLevelProgress;
         }
         private void onModeChange(object sender, EventArgs e)
@@ -90,6 +95,7 @@ namespace titanic_launcher
         private void tabSettings_Click(object sender, EventArgs e)
         {
             tSettings.comboBox1.SelectedIndexChanged += this.onModeChange;
+            tSettings.checkBox1.CheckStateChanged += this.onProgressCheck;
             container.Controls.Clear();
             container.Controls.Add(tSettings);
         }

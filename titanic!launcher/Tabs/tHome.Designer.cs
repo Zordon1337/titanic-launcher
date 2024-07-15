@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             listBox1 = new ListBox();
+            ClientImage = new PictureBox();
+            InstallBtn = new Button();
+            RunBtn = new Button();
+            ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
             // 
             // listBox1
@@ -42,21 +46,67 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(189, 330);
             listBox1.TabIndex = 0;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
+            // ClientImage
+            // 
+            ClientImage.BackColor = Color.Black;
+            ClientImage.Location = new Point(187, -1);
+            ClientImage.Name = "ClientImage";
+            ClientImage.Size = new Size(610, 215);
+            ClientImage.SizeMode = PictureBoxSizeMode.Zoom;
+            ClientImage.TabIndex = 1;
+            ClientImage.TabStop = false;
+            ClientImage.Click += ClientImage_Click;
+            // 
+            // InstallBtn
+            // 
+            InstallBtn.BackColor = Color.Blue;
+            InstallBtn.FlatStyle = FlatStyle.Popup;
+            InstallBtn.Location = new Point(650, 283);
+            InstallBtn.Name = "InstallBtn";
+            InstallBtn.Size = new Size(128, 28);
+            InstallBtn.TabIndex = 2;
+            InstallBtn.Text = "Install";
+            InstallBtn.UseVisualStyleBackColor = false;
+            InstallBtn.Visible = false;
+            InstallBtn.Click += button1_Click;
+            // 
+            // RunBtn
+            // 
+            RunBtn.BackColor = Color.Green;
+            RunBtn.FlatStyle = FlatStyle.Popup;
+            RunBtn.Location = new Point(516, 283);
+            RunBtn.Name = "RunBtn";
+            RunBtn.Size = new Size(128, 28);
+            RunBtn.TabIndex = 2;
+            RunBtn.Text = "Run";
+            RunBtn.UseVisualStyleBackColor = false;
+            RunBtn.Visible = false;
+            RunBtn.Click += RunBtn_Click;
             // 
             // tHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(11, 11, 11);
+            Controls.Add(RunBtn);
+            Controls.Add(InstallBtn);
+            Controls.Add(ClientImage);
             Controls.Add(listBox1);
             ForeColor = Color.White;
             Name = "tHome";
             Size = new Size(797, 328);
+            Load += tHome_Load;
+            ((System.ComponentModel.ISupportInitialize)ClientImage).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private ListBox listBox1;
+        private PictureBox ClientImage;
+        private Button InstallBtn;
+        private Button RunBtn;
     }
 }

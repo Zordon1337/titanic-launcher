@@ -31,6 +31,7 @@
             checkBox1 = new CheckBox();
             comboBox1 = new ComboBox();
             label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // checkBox1
@@ -69,11 +70,22 @@
             label1.TabIndex = 2;
             label1.Text = "User Stats Gamemode";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(774, 313);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 15);
+            label2.TabIndex = 3;
+            label2.Click += label2_Click;
+            label2.Paint += label2_Paint;
+            // 
             // tSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(11, 11, 11);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(comboBox1);
             Controls.Add(checkBox1);
@@ -86,9 +98,9 @@
         }
 
         #endregion
-
-        private CheckBox checkBox1;
         private Label label1;
         public ComboBox comboBox1;
+        private Label label2;
+        public CheckBox checkBox1;
     }
 }

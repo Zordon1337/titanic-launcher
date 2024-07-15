@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO.Compression;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -41,6 +44,43 @@ namespace titanic_launcher
 
         [JsonPropertyName("actions")]
         public List<string> Actions { get; set; }
+        public bool isInstalled()
+        {
+            if(!Directory.Exists("./clients"))
+            {
+                Directory.CreateDirectory("./clients");
+                return false;
+            }
+            if (!Directory.Exists($"./clients/{this.Name}"))
+            {
+                return false;
+            }
+            // shit check, but i have no idea how could i check if there is executable inside without making spaghetti from code
+            if(Directory.GetFiles($"./clients/{this.Name}").Length < 5)
+            {
+                return false;
+            }
+            return true;
+        }
+        public void Run()
+        {
+            string filename = "";
+            if (File.Exists($"./clients/{this.Name}/osu.exe"))
+                filename = "osu.exe";
+            if (File.Exists($"./clients/{this.Name}/osu!.exe"))
+                filename = "osu!.exe";
+            if (File.Exists($"./clients/{this.Name}/osu!test.exe"))
+                filename = "osu!test.exe";
+            if (File.Exists($"./clients/{this.Name}/osu!shine.exe"))
+                filename = "osu!shine.exe";
+            Process.Start($"./clients/{this.Name}/{filename}");
+        }
+        public void Install()
+        {
+            new WebClient().DownloadFile(this.Downloads[0],"./clients/temp.zip");
+            ZipFile.ExtractToDirectory("./clients/temp.zip", $"./clients/{this.Name}");
+            try { File.Delete("./client/temp.zip"); } catch { }
+        }
     }
 
     public class Hash
