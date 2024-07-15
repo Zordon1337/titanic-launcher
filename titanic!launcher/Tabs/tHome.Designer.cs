@@ -34,6 +34,7 @@
             RunBtn = new Button();
             BeatmapsLabel = new Label();
             SkinsLabel = new Label();
+            ShowGameFilesBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
             // 
@@ -78,7 +79,7 @@
             // 
             RunBtn.BackColor = Color.Green;
             RunBtn.FlatStyle = FlatStyle.Popup;
-            RunBtn.Location = new Point(516, 283);
+            RunBtn.Location = new Point(382, 283);
             RunBtn.Name = "RunBtn";
             RunBtn.Size = new Size(128, 28);
             RunBtn.TabIndex = 2;
@@ -107,6 +108,19 @@
             SkinsLabel.Text = "Skins: ";
             SkinsLabel.Visible = false;
             // 
+            // ShowGameFilesBtn
+            // 
+            ShowGameFilesBtn.BackColor = Color.LightSeaGreen;
+            ShowGameFilesBtn.FlatStyle = FlatStyle.Popup;
+            ShowGameFilesBtn.Location = new Point(516, 283);
+            ShowGameFilesBtn.Name = "ShowGameFilesBtn";
+            ShowGameFilesBtn.Size = new Size(128, 28);
+            ShowGameFilesBtn.TabIndex = 2;
+            ShowGameFilesBtn.Text = "Show Gamefiles";
+            ShowGameFilesBtn.UseVisualStyleBackColor = false;
+            ShowGameFilesBtn.Visible = false;
+            ShowGameFilesBtn.Click += ShowGameFilesBtn_Click;
+            // 
             // tHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -114,6 +128,7 @@
             BackColor = Color.FromArgb(11, 11, 11);
             Controls.Add(SkinsLabel);
             Controls.Add(BeatmapsLabel);
+            Controls.Add(ShowGameFilesBtn);
             Controls.Add(RunBtn);
             Controls.Add(InstallBtn);
             Controls.Add(ClientImage);
@@ -135,5 +150,6 @@
         private Button RunBtn;
         private Label BeatmapsLabel;
         private Label SkinsLabel;
+        private Button ShowGameFilesBtn;
     }
 }

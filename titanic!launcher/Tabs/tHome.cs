@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,13 +48,17 @@ namespace titanic_launcher.Tabs
                 SkinsLabel.Visible = true;
                 SkinsLabel.Text = $"Skins: {clients[listBox1.SelectedIndex].getSkins()}";
                 BeatmapsLabel.Text = $"Beatmaps: {clients[listBox1.SelectedIndex].getMaps()}";
-            } else
+                ShowGameFilesBtn.Visible = true;
+                ShowGameFilesBtn.Location = new Point(327, 220);
+            }
+            else
             {
                 InstallBtn.Visible = true;
                 InstallBtn.Location = installpos;
                 RunBtn.Visible = false;
                 BeatmapsLabel.Visible = false;
                 SkinsLabel.Visible = false;
+                ShowGameFilesBtn.Visible = false;
             }
 
         }
@@ -66,12 +71,17 @@ namespace titanic_launcher.Tabs
         private void button1_Click(object sender, EventArgs e)
         {
             clients[listBox1.SelectedIndex].Install();
-            listBox1_SelectedIndexChanged(sender,e);
+            listBox1_SelectedIndexChanged(sender, e);
         }
 
         private void RunBtn_Click(object sender, EventArgs e)
         {
             clients[listBox1.SelectedIndex].Run();
+        }
+
+        private void ShowGameFilesBtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", $"{Application.StartupPath}clients\\{clients[listBox1.SelectedIndex].Name}");
         }
     }
 }
