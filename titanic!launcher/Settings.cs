@@ -16,7 +16,7 @@ namespace titanic_launcher
     public static readonly string version_ = "";
 #endif
 
-        public static readonly string version = "b19" + version_;
+        public static readonly string version = "b20" + version_;
         public static bool bHideLevelProgress = true;
         public static string sUsername = "";
         public static User u = null;
@@ -30,7 +30,17 @@ namespace titanic_launcher
         }
         public static void WriteToConfig()
         {
-            File.WriteAllText("./config.tl",$"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}\n{FavoriteMode}\n{manifest}");
+            string write = $"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}\n{FavoriteMode}\n{manifest}";
+            for (int i = 0; i < clients.Count; i++) {
+                if (clients[i].LastPlayed == null)
+                    continue;
+                write += $"\n{clients[i].Name}|{clients[i].LastPlayed}";
+            }
+            File.WriteAllText("./config.tl",write);
+        }
+        private static Client FindClient(string value)
+        {
+            return Settings.clients.Find(x => x.Name == value);
         }
         public static void ReadFromConfig() 
         {
@@ -42,6 +52,17 @@ namespace titanic_launcher
                 Settings.bHideLevelProgress = lines[1] == "true";
                 Settings.FavoriteMode = int.Parse(lines[2]);
                 Settings.manifest = lines[3];
+                new Thread(() =>
+                {
+                    Thread.Sleep(1000);
+                    for (int i = 4; i < lines.Length; i++)
+                    {
+                        var split = lines[i].Split("|");
+                        var client = FindClient(split[0]);
+                        var LastPlayed = split[1];
+                        client.LastPlayed = LastPlayed;
+                    }
+                }).Start();
             } else
             {
                 Settings.manifest = "https://osu.lekuru.xyz/api/clients";
