@@ -16,6 +16,7 @@ namespace titanic_launcher.Tabs
         {
             InitializeComponent();
             this.textBox1.Text = Settings.sUsername;
+            this.comboBox1.SelectedIndex = Settings.FavoriteMode;
         }
 
         private void tSettings_Load(object sender, EventArgs e)

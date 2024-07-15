@@ -16,19 +16,20 @@ namespace titanic_launcher
     public static readonly string version_ = "";
 #endif
 
-        public static readonly string version = "b5" + version_;
+        public static readonly string version = "b8" + version_;
         public static bool bHideLevelProgress = true;
         public static string sUsername = "";
         public static User u = null;
         static string tr = "true";
         static string fl = "false";
+        public static int FavoriteMode = 0;
         private static string BoolToString(bool value)
         {
             return value ? "true" : "false";
         }
         public static void WriteToConfig()
         {
-            File.WriteAllText("./config.tl",$"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}");
+            File.WriteAllText("./config.tl",$"{Settings.sUsername}\n{BoolToString(Settings.bHideLevelProgress)}\n{FavoriteMode}");
         }
         public static void ReadFromConfig() 
         {
@@ -38,6 +39,7 @@ namespace titanic_launcher
                 string[] lines = config.Split(new char[] { '\n' });
                 sUsername = lines[0];
                 bHideLevelProgress = lines[1] == "true";
+                FavoriteMode = int.Parse(lines[2]);
             }
         }
     }

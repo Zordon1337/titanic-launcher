@@ -59,6 +59,7 @@ namespace titanic_launcher
         {
             if (Settings.u == null)
                 return;
+            Settings.FavoriteMode = tSettings.comboBox1.SelectedIndex;
             switch (tSettings.comboBox1.SelectedIndex)
             {
                 case 0:
