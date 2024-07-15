@@ -32,6 +32,8 @@
             ClientImage = new PictureBox();
             InstallBtn = new Button();
             RunBtn = new Button();
+            BeatmapsLabel = new Label();
+            SkinsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)ClientImage).BeginInit();
             SuspendLayout();
             // 
@@ -85,11 +87,33 @@
             RunBtn.Visible = false;
             RunBtn.Click += RunBtn_Click;
             // 
+            // BeatmapsLabel
+            // 
+            BeatmapsLabel.AutoSize = true;
+            BeatmapsLabel.Location = new Point(193, 251);
+            BeatmapsLabel.Name = "BeatmapsLabel";
+            BeatmapsLabel.Size = new Size(65, 15);
+            BeatmapsLabel.TabIndex = 3;
+            BeatmapsLabel.Text = "Beatmaps: ";
+            BeatmapsLabel.Visible = false;
+            // 
+            // SkinsLabel
+            // 
+            SkinsLabel.AutoSize = true;
+            SkinsLabel.Location = new Point(193, 266);
+            SkinsLabel.Name = "SkinsLabel";
+            SkinsLabel.Size = new Size(40, 15);
+            SkinsLabel.TabIndex = 3;
+            SkinsLabel.Text = "Skins: ";
+            SkinsLabel.Visible = false;
+            // 
             // tHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(11, 11, 11);
+            Controls.Add(SkinsLabel);
+            Controls.Add(BeatmapsLabel);
             Controls.Add(RunBtn);
             Controls.Add(InstallBtn);
             Controls.Add(ClientImage);
@@ -100,6 +124,7 @@
             Load += tHome_Load;
             ((System.ComponentModel.ISupportInitialize)ClientImage).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -108,5 +133,7 @@
         private PictureBox ClientImage;
         private Button InstallBtn;
         private Button RunBtn;
+        private Label BeatmapsLabel;
+        private Label SkinsLabel;
     }
 }

@@ -43,11 +43,17 @@ namespace titanic_launcher.Tabs
                 InstallBtn.Visible = false;
                 RunBtn.Location = installpos;
                 RunBtn.Visible = true;
+                BeatmapsLabel.Visible = true;
+                SkinsLabel.Visible = true;
+                SkinsLabel.Text = $"Skins: {clients[listBox1.SelectedIndex].getSkins()}";
+                BeatmapsLabel.Text = $"Beatmaps: {clients[listBox1.SelectedIndex].getMaps()}";
             } else
             {
                 InstallBtn.Visible = true;
                 InstallBtn.Location = installpos;
                 RunBtn.Visible = false;
+                BeatmapsLabel.Visible = false;
+                SkinsLabel.Visible = false;
             }
 
         }
