@@ -15,19 +15,20 @@ namespace titanic_launcher.Tabs
         public tSettings()
         {
             InitializeComponent();
-            this.textBox1.Text = Settings.sUsername;
-            this.comboBox1.SelectedIndex = Settings.FavoriteMode;
         }
 
         private void tSettings_Load(object sender, EventArgs e)
         {
 
             label2.Text = Settings.version.ToString();
+            this.textBox1.Text = Settings.sUsername;
+            this.comboBox1.SelectedIndex = Settings.FavoriteMode;
+            this.checkBox1.Checked = Settings.bHideLevelProgress;
         }
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
-            Settings.bHideLevelProgress = !Settings.bHideLevelProgress;
+            Settings.bHideLevelProgress = this.checkBox1.Checked;
         }
 
         private void label2_Paint(object sender, PaintEventArgs e)

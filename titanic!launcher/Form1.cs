@@ -43,13 +43,14 @@ namespace titanic_launcher
             {
                 Username.Text = "User not logged in";
             }
+            
+            progressBar1.Visible = !Settings.bHideLevelProgress;
         }
 
         private void userInfopanel_Paint(object sender, PaintEventArgs e)
         {
 
 
-            progressBar1.Visible = !Settings.bHideLevelProgress;
         }
         private void onProgressCheck(object sender, EventArgs e)
         {
