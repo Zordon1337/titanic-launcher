@@ -16,7 +16,7 @@ namespace titanic_launcher
     public static readonly string version_ = "";
 #endif
 
-        public static readonly string version = "b23" + version_;
+        public static readonly string version = "b25" + version_;
         public static bool bHideLevelProgress = true;
         public static string sUsername = "";
         public static User u = null;
@@ -65,7 +65,7 @@ namespace titanic_launcher
                 }).Start();
             } else
             {
-                Settings.manifest = "https://osu.lekuru.xyz/api/clients";
+                Settings.manifest = "https://osu.titanic.sh/api/clients";
             } 
             
         }
